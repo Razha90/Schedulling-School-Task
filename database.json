@@ -1,0 +1,80 @@
+{
+  "users": [
+    {
+      "nim": "5223351029",
+      "nama": "Razha Jamsik Syah",
+      "peringkat": "admin",
+      "email": "razha9046123@gmail.com",
+      "password": "razha9046123",
+      "kelas": "admin"
+    },
+    {
+      "nim": "5223351028",
+      "nama": "Ghaitsa",
+      "peringkat": "ketua",
+      "email": "ghaitsa@gmail.com",
+      "password": "ghaitsa123",
+      "kelas": "ptik-c"
+    },
+    {
+      "nim": "5223351027",
+      "nama": "Liska Yuni",
+      "peringkat": "anggota",
+      "email": "liska@gmail.com",
+      "password": "liska123",
+      "kelas": "ptik-c"
+    },
+    {
+      "nim": "122323232",
+      "nama": "razha",
+      "peringkat": "anggota",
+      "email": "liska1@gmail.com",
+      "password": "razha123",
+      "kelas": "ptik-c"
+    }
+  ],
+  "kelas": [
+    "ptik-c",
+    "ptik-a",
+    "ptik-a",
+    "ptik-d"
+  ],
+  "schedule": [
+    {
+      "prioritas": "all",
+      "create": "30-5-2003",
+      "last": "2023-06-02T14:30:00",
+      "tema": "Bahasa Inggris",
+      "content": "Pelajaran Bahasa Inggris",
+      "kelas": "ptik-c",
+      "send": false
+    },
+    {
+      "prioritas": "ptik-c",
+      "create": "30-5-2003",
+      "last": "2023-06-03T14:30:00",
+      "tema": "Bahasa Indonesia",
+      "content": "Pelajaran yang sangat saya sukai",
+      "kelas": "ptik-c",
+      "send": false
+    },
+    {
+      "prioritas": "ptik-c",
+      "create": "30-5-2023",
+      "last": "2023-06-03T14:30:00",
+      "tema": "Bahasa Inggris",
+      "content": "Pelajaran Bahasa Inggris",
+      "kelas": "ptik-c",
+      "send": false
+    },
+    {
+      "prioritas": "ptik-c",
+      "create": "1-6-2023",
+      "last": "2023-06-14T23:21:00",
+      "tema": "ascasxas",
+      "content": " asasdasdas",
+      "kelas": "ptik-c",
+      "send": false
+    }
+  ]
+}

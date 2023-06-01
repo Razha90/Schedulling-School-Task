@@ -1,0 +1,21 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.field {
+    width: 250px;
+}
+
+input {
+    width: 92%;
+}
+
+input[type="text"] {
+    padding: 4%;
+}
+
+textarea {
+    resize: none;
+}

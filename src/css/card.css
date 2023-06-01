@@ -1,0 +1,43 @@
+.content-main {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 250px;
+    height: auto;
+    text-align: center;
+    padding: 20px 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    font-size: larger;
+    font-family: 'Catamaran', sans-serif;
+}
+
+.card:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    transform: translateY(-30px);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.cardBlue {
+    background-color: #00C4FF;
+}
+
+.cardRed {
+    background-color: #E76161;
+}
+
+.cardGreen {
+    background-color: #E3F2C1;
+}

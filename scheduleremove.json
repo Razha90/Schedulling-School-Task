@@ -1,0 +1,38 @@
+[
+  {
+    "prioritas": "all",
+    "create": "30-5-2003",
+    "last": "2023-06-01T14:30:00",
+    "tema": "Bahasa Inggris",
+    "content": "Pelajaran Bahasa Inggris",
+    "kelas": "ptik-c",
+    "send": false
+  },
+  {
+    "prioritas": "all",
+    "create": "30-5-2003",
+    "last": "2023-06-01T14:30:00",
+    "tema": "Bahasa Inggris",
+    "content": "Pelajaran Bahasa Inggris",
+    "kelas": "ptik-a",
+    "send": false
+  },
+  {
+    "prioritas": "all",
+    "create": "30-5-2003",
+    "last": "2023-06-01T14:30:00",
+    "tema": "Bahasa Inggris",
+    "content": "Pelajaran Bahasa Inggris",
+    "kelas": "ptik-a",
+    "send": false
+  },
+  {
+    "prioritas": "all",
+    "create": "30-5-2003",
+    "last": "2023-06-01T14:30:00",
+    "tema": "Bahasa Inggris",
+    "content": "Pelajaran Bahasa Inggris",
+    "kelas": "ptik-a",
+    "send": false
+  }
+]
