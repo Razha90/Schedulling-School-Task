@@ -165,6 +165,16 @@ data.kelas.forEach((e) => {
   });
 });
 
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect('/');
+    }
+  });
+})
+
 // Request Make Schedule
 app.post("/create", (req, res) => {
   var today = new Date();

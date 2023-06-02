@@ -19,3 +19,7 @@ html,body {
 body {
     background-color: var(--kuning);
 }
+
+.content {
+    display: none;
+}

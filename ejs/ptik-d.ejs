@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengatur Tugas Kampus</title>
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/htmlSet.css" />
+    <link rel="stylesheet" href="../css/kelas.css" />
+    <link rel="stylesheet" href="../css/card.css" />
+    <link rel="stylesheet" href="../css/form.css">
+  </head>
+  <body>
+    <header>
+      <h1>RazhaTask</h1>
+      <nav>
+        <nav>
+        <ul>
+          <li>
+            <div><%= user.nama %></div>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/kelas"><%= user.kelas %></a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+      </nav>
+      </nav>
+    </header>
+    <main class="content">
+      <div class="main-one">
+        <img src="../image/add.png" alt="Tambahkan Matkul" />
+      </div>
+      <div class="content-main"></div>
+
+      <div class="black-screen hide"></div>
+      <div class="wrapper-form hide">
+        <div class="button-closed">
+          <img src="/image/closed.png" alt="" />
+        </div>
+
+        <form method="post" action="/create">
+          <div class="field">
+            <label for="tema">Nama Acara</label><br />
+            <input type="text" name="tema" />
+          </div>
+          <div class="field">
+            <label for="last">Acara Dimulai</label><br />
+            <input type="datetime-local" id="tanggal" name="last" />
+          </div>
+          <div class="field">
+            <label for="prioritas">Siapa yang bisa melihat?</label><br />
+            <select name="prioritas">
+              <option disabled selected>Pilih Kelas</option>
+              <option value="all">All</option>
+              <option value="<%= user.kelas %>"><%= user.kelas %></option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="content">Detail Kegiatan</label><br />
+            <textarea name="content" cols="30" rows="10"> </textarea>
+          </div>
+          <div class="field">
+            <input type="submit" value="Send!" />
+          </div>
+        </form>
+
+      </div>
+    </main>
+    <footer class="content"></footer>
+    <div id="loading">
+      <img src="../image/369.gif" alt="loading">
+    </div>
+  </body>
+  <script src="../script/loading.js"></script>
+  <script>
+    var showon = document.querySelector(".main-one img");
+    var blackScreen = document.querySelectorAll(".hide");
+    var showoff = document.querySelector(".button-closed");
+    let darkScreen = false;
+
+    showon.addEventListener("click", (e) => {
+      blackScreen.forEach((i) => {
+        i.style.display = "block";
+      });
+      darkScreen = true;
+    });
+
+    showoff.addEventListener("click", (e) => {
+      blackScreen.forEach((i) => {
+        i.style.display = "none";
+      });
+      darkScreen = false;
+    });
+    var scheduleData = JSON.parse(
+      "<%= JSON.stringify(schedule) %>".replace(/&#34;/g, '"')
+    );
+    var deploy;
+    scheduleData.forEach((e) => {
+      deploy = `
+        <div class="card ${selesihWarna(e.last)}">
+          <div><img src="${selisihGambar(e.last)}" alt="Gambar Kawaii"/></div>
+          <div>
+            <h3>${e.tema}</h3>
+            <p>${e.content}</p>
+            </div>
+            <div>${selisihWaktu(e.last)}</div>
+        </div>
+      `;
+      document.querySelector(".content-main").innerHTML += deploy;
+    });
+
+    function selisihGambar(t) {
+      // Menghitung selisih waktu antara sekarang dan waktu target dalam milidetik
+      var currentTime = new Date(t);
+      var sixHoursLater = new Date(currentTime.getTime() + 6 * 60 * 60 * 1000);
+      var oneDayLater = new Date(currentTime.getTime() + 24 * 60 * 60 * 1000);
+      var oneHourLeft = new Date(currentTime.getTime() + 1 * 60 * 60 * 1000);
+
+      if (sixHoursLater > currentTime) {
+        return "/image/wait.gif";
+      }
+      if (oneDayLater > currentTime) {
+        return "/image/enjoy.gif";
+      }
+      if (oneHourLeft > currentTime) {
+        return "/image/panic.gif";
+      }
+    }
+
+    function selisihWaktu(t) {
+      var currentTime = new Date();
+      var targetTime = new Date(t);
+      var timeDifference = targetTime - currentTime;
+
+      if (timeDifference > 24 * 60 * 60 * 1000) {
+        var days = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
+        return `${days} hari lagi!`;
+      }
+
+      if (
+        timeDifference < 24 * 60 * 60 * 1000 &&
+        timeDifference > 60 * 60 * 1000
+      ) {
+        var hours = Math.floor(timeDifference / (60 * 60 * 1000));
+        return `${hours} jam lagi!`;
+      }
+
+      if (timeDifference < 60 * 60 * 1000) {
+        var minutes = Math.floor(timeDifference / (60 * 1000));
+        return `${minutes} menit lagi!`;
+      }
+    }
+
+    function selesihWarna(t) {
+      // Menghitung selisih waktu antara sekarang dan waktu target dalam milidetik
+      var currentTime = new Date(t);
+      var sixHoursLater = new Date(currentTime.getTime() + 6 * 60 * 60 * 1000);
+      var oneDayLater = new Date(currentTime.getTime() + 24 * 60 * 60 * 1000);
+      var oneHourLeft = new Date(currentTime.getTime() + 1 * 60 * 60 * 1000);
+
+      if (oneDayLater > currentTime) {
+        return "cardBlue";
+      }
+      if (sixHoursLater > currentTime) {
+        return "cardGreen";
+      }
+      if (oneHourLeft > currentTime) {
+        return "cardRed";
+      }
+    }
+  </script>
+</html>

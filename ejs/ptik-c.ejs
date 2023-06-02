@@ -11,17 +11,23 @@
     <link rel="stylesheet" href="../css/card.css" />
     <link rel="stylesheet" href="../css/form.css">
   </head>
-  <style></style>
   <body>
     <header>
       <h1>RazhaTask</h1>
       <nav>
+        <nav>
         <ul>
-          <li><%= user.nama %></li>
-        </ul>
+          <li>
+            <div><%= user.nama %></div>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/kelas"><%= user.kelas %></a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+      </nav>
       </nav>
     </header>
-    <main>
+    <main class="content">
       <div class="main-one">
         <img src="../image/add.png" alt="Tambahkan Matkul" />
       </div>
@@ -61,8 +67,12 @@
 
       </div>
     </main>
-    <footer></footer>
+    <footer class="content"></footer>
+    <div id="loading">
+      <img src="../image/369.gif" alt="loading">
+    </div>
   </body>
+  <script src="../script/loading.js"></script>
   <script>
     var showon = document.querySelector(".main-one img");
     var blackScreen = document.querySelectorAll(".hide");

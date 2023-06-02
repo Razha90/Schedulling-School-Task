@@ -41,15 +41,6 @@
   ],
   "schedule": [
     {
-      "prioritas": "all",
-      "create": "30-5-2003",
-      "last": "2023-06-02T14:30:00",
-      "tema": "Bahasa Inggris",
-      "content": "Pelajaran Bahasa Inggris",
-      "kelas": "ptik-c",
-      "send": false
-    },
-    {
       "prioritas": "ptik-c",
       "create": "30-5-2003",
       "last": "2023-06-03T14:30:00",
@@ -73,6 +64,24 @@
       "last": "2023-06-14T23:21:00",
       "tema": "ascasxas",
       "content": " asasdasdas",
+      "kelas": "ptik-c",
+      "send": false
+    },
+    {
+      "prioritas": "all",
+      "create": "2-6-2023",
+      "last": "2023-06-11T15:46:00",
+      "tema": "Bahasa Arab",
+      "content": " Belajar\r\n bareng",
+      "kelas": "ptik-c",
+      "send": false
+    },
+    {
+      "prioritas": "ptik-c",
+      "create": "2-6-2023",
+      "last": "2023-06-02T21:11:00",
+      "tema": "klontong",
+      "content": " babi",
       "kelas": "ptik-c",
       "send": false
     }

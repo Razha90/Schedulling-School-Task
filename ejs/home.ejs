@@ -14,8 +14,13 @@
       <h1>RazhaTask</h1>
       <nav>
         <ul>
-          <li><%= user.nama %></li>
-        </ul>
+          <li>
+            <div><%= user.nama %></div>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/kelas"><%= user.kelas %></a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
       </nav>
     </header>
     <main>
