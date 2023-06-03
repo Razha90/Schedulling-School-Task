@@ -5,6 +5,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const setInterval = require("timers").setInterval;
+const emailModule = require('./sendemail');
 
 const publicPath = path.join(__dirname, "src");
 app.use(express.static(publicPath));
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
-    secret: "razhaCock",
+    secret: "dkpdscopdcewopj3emdfdlmljn",
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -37,7 +38,6 @@ function checkAndRemoveSchedule() {
     const lastTime = new Date(entry.last);
     return currentTime <= lastTime; // Biarkan entri yang waktu "last"-nya belum terlampui
   });
-
   if (updatedSchedule.length !== data.schedule.length) {
     // Ada entri yang dihapus, update data JSON
     const removedSchedule = data.schedule.filter(
@@ -56,7 +56,40 @@ function checkAndRemoveSchedule() {
     console.log("Data Dihapus Silakan Chechk");
   }
 }
-const interval = setInterval(checkAndRemoveSchedule, 6000);
+
+function sendMail() {
+  readData();
+  const currentTime = new Date();
+  const oneHourAgo = currentTime.setHours(currentTime.getHours() - 1);
+  const sixHoursAgo = currentTime.setHours(currentTime.getHours() - 6);
+  const oneDayAgo = currentTime.setDate(currentTime.getDate() - 1);
+
+  data.schedule.forEach((event) => {
+    const eventTime = new Date(event.last);
+
+    if (!event.emailDay && oneDayAgo <= currentTime) {
+      emailModule.sendEmail('razhajamsiksyah@gmail.com', `No-Reply ${event.name}`, `Kelas Akan dimulai Pada ${event.last} ${event.content}`);
+      event.emailDay = true;
+    }
+
+    if (!event.emailDay && sixHoursAgo <= eventTime) {
+      emailModule.sendEmail('razhajamsiksyah@gmail.com', `No-Reply ${event.name}`, `Kelas Akan dimulai Pada ${event.last} ${event.content}`);
+      event.emailSix = true;
+    }
+
+    if (!event.emailOne && oneHourAgo <= eventTime) {
+      emailModule.sendEmail('razhajamsiksyah@gmail.com', `No-Reply ${event.name}`, `Kelas Akan dimulai Pada ${event.last} ${event.content}`);
+      event.emailOne = true;
+    }
+  });
+
+  fs.writeFileSync("database.json", JSON.stringify(data, null, 2));
+
+  checkAndRemoveSchedule();
+}
+
+const sendMailInterval = setInterval(sendMail, 6000);
+
 
 // Home
 app.get("/", (req, res) => {
@@ -194,7 +227,9 @@ readData();
     "tema": tema,
     "content": content,
     "kelas": kelas,
-    send: false
+    "emailOne" :false,
+    "emailSix" :false,
+    "emailDay" :false
   });
 
   fs.writeFileSync("database.json", JSON.stringify(data, null, 2));
