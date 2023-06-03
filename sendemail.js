@@ -5,14 +5,14 @@ function sendEmail(to, subject, body) {
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'razha9046123@gmail.com', // Masukkan email Anda di sini
-      pass: 'jmshtsyogokmkerh' // Masukkan password email Anda di sini
+      user: 'example123@gmail.com', // Masukkan email Anda di sini
+      pass: 'password' // Masukkan password email Anda di sini
     }
   });
 
   // Pengaturan email
   const mailOptions = {
-    from: 'razha9046123@gmail.com',
+    from: 'no-reply@gmail.com',
     to: to,
     subject: subject,
     text: body
